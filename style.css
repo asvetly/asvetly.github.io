@@ -1,0 +1,58 @@
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.sticker-container {
+    align-content: space-between;
+    border-radius: 10px;
+    box-shadow: #00000061 0 5px 10px, inset #00000024 0 0 50px;
+    display: flex;
+    flex-direction: column;
+    height: 243px;
+    justify-content: space-between;
+    margin-top: 10%;
+    text-align: center;
+    width: 432px;
+}
+
+.sticker-header, .sticker-footer {
+    background-color: red;
+    color: white;
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+.sticker-header {
+    border-radius: 10px 10px 0 0;
+    padding: 5px 0;
+}
+
+.sticker-header > h1 {
+    font-weight: 100;
+    letter-spacing: 0.6rem;
+    margin: 0;
+}
+
+.sticker-header > span {
+    letter-spacing: 0.21rem;
+}
+
+.sticker-footer {
+    border-radius: 0 0 10px 10px;
+    padding: 7px;
+}
+
+.sticker-body {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.sticker-body > span {
+    font-family: monospace;
+    font-size: 2rem;
+    transform: rotate(-5deg);
+}
