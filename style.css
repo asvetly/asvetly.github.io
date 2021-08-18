@@ -38,11 +38,6 @@
     letter-spacing: 0.21rem;
 }
 
-.sticker-footer {
-    border-radius: 0 0 10px 10px;
-    padding: 7px;
-}
-
 .sticker-body {
     align-items: center;
     background-color: white;
@@ -55,4 +50,18 @@
     font-family: monospace;
     font-size: 2rem;
     transform: rotate(-5deg);
+}
+
+.sticker-footer {
+    border-radius: 0 0 10px 10px;
+    padding: 7px;
+}
+
+.sticker-footer > a {
+    color: white;
+}
+
+.sticker-footer > span {
+    font-size: 0.8rem;
+    white-space: pre;
 }
