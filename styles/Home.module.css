@@ -3,7 +3,7 @@
     justify-content: center;
 }
 
-.sticker-container {
+.stickerContainer {
     align-content: space-between;
     border-radius: 10px;
     box-shadow: #00000061 0 5px 10px, inset #00000024 0 0 50px;
@@ -16,29 +16,29 @@
     width: 432px;
 }
 
-.sticker-header, .sticker-footer {
+.stickerHeader, .stickerFooter {
     background-color: red;
     color: white;
     font-family: sans-serif;
     font-weight: 100;
 }
 
-.sticker-header {
+.stickerHeader {
     border-radius: 10px 10px 0 0;
     padding: 5px 0;
 }
 
-.sticker-header > h1 {
+.stickerHeader > h1 {
     font-weight: 100;
     letter-spacing: 0.6rem;
     margin: 0;
 }
 
-.sticker-header > span {
+.stickerHeader > span {
     letter-spacing: 0.21rem;
 }
 
-.sticker-body {
+.stickerBody {
     align-items: center;
     background-color: white;
     display: flex;
@@ -46,22 +46,22 @@
     justify-content: center;
 }
 
-.sticker-body > span {
+.stickerBody > span {
     font-family: monospace;
     font-size: 2rem;
     transform: rotate(-5deg);
 }
 
-.sticker-footer {
+.stickerFooter {
     border-radius: 0 0 10px 10px;
     padding: 7px;
 }
 
-.sticker-footer > a {
+.stickerFooter > a {
     color: white;
 }
 
-.sticker-footer > span {
+.stickerFooter > span {
     font-size: 0.8rem;
     white-space: pre;
 }
