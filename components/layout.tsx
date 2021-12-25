@@ -20,39 +20,21 @@ export default function Layout({ children, home }: PropsWithChildren<{ home?: bo
                 <link rel="manifest" href="/manifest.json"/>
             </Head>
             <header className={styles.header}>
-                {home ? (
-                    <>
-                        <Image
-                            priority
-                            src="/images/profile.png"
-                            className={utilStyles.borderCircle}
-                            height={144}
-                            width={144}
-                            alt="asvetly"
-                        />
-                        <h1 className={utilStyles.heading2Xl}>asvetly</h1>
-                    </>
-                ) : (
-                    <>
-                        <Link href="/">
-                            <a>
-                                <Image
-                                    priority
-                                    src="/images/profile.png"
-                                    className={utilStyles.borderCircle}
-                                    height={108}
-                                    width={108}
-                                    alt="asvetly"
-                                />
-                            </a>
-                        </Link>
-                        <h2 className={utilStyles.headingLg}>
-                            <Link href="/">
-                                <a className={utilStyles.colorInherit}>asvetly</a>
-                            </Link>
-                        </h2>
-                    </>
-                )}
+                {
+                    home && (
+                        <>
+                            <Image
+                                priority
+                                src="/images/profile.png"
+                                className={utilStyles.borderCircle}
+                                height={144}
+                                width={144}
+                                alt="asvetly"
+                            />
+                            <h1 className={utilStyles.heading2Xl}>asvetly</h1>
+                        </>
+                    )
+                }
             </header>
             <main>{children}</main>
             {!home && (

@@ -33,6 +33,8 @@ const Home: NextPage = () => {
                         <a href="https://github.com/asvetly" target="_blank" rel="noreferrer">github</a>
                         <span>  •  </span>
                         <a href="/cv.pdf" target="_blank">cv</a>
+                        <span>  •  </span>
+                        <a href="https://codepen.io/asvetly" target="_blank" rel="noreferrer">codepen</a>
                     </div>
                 </div>
             </main>
