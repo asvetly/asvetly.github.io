@@ -137,12 +137,38 @@ const NewYearGift: NextPage = () => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        padding: '20px 10px',
+                        fontSize: '1rem',
                     }}
                 >
-                    <h4>{ message?.title }</h4>
-                    <p>{ message?.message }</p>
-                    <div>
-                        { message?.link }
+                    <h4
+                        style={{
+                            fontSize: '1.2rem'
+                        }}
+                    >
+                        { message?.title }
+                    </h4>
+                    <p style={{ fontSize: '1rem' }}>{ message?.message }</p>
+                    <div style={{
+                        position: 'relative',
+                        fontSize: '1.2rem',
+                        background: '#d3d3d326',
+                        borderRadius: '8px',
+                        padding: '5px',
+                        borderTopLeftRadius: 0,
+                    }}>
+                        <span
+                            style={{
+                                fontSize: '0.55rem',
+                                position: 'absolute',
+                                top: '-14px',
+                                left: '0px',
+                            }}
+                        >
+                            Код для доступа к тесту
+                        </span>
+                        <b>{ message?.link }</b>
                     </div>
                 </Card>
             </CardContainer>

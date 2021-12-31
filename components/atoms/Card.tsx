@@ -16,14 +16,14 @@ export const Card = styled.div<{ height: string; width: string }>`
   cursor: pointer;
   transform: translate3d(50%, 50%, 10xp);
 
-  &:hover {
-    color: rgb(88 199 250 / 100%);
-    transition: color 1s;
-  }
-  &:hover:before, &:hover:after {
-    animation: none;
-    opacity: 0;
-  }
+  //&:hover {
+  //  color: rgb(88 199 250 / 100%);
+  //  transition: color 1s;
+  //}
+  //&:hover:before, &:hover:after {
+  //  animation: none;
+  //  opacity: 0;
+  //}
 
   &::before {
     content: "";
