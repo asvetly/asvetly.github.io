@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 import useWindowSize from "../../hooks/useWindowSize";
 import {useEffect, useState} from "react";
 
@@ -8,7 +8,7 @@ const LightStripContainer = styled.ul`
   overflow: hidden;
   position: absolute;
   z-index: 1;
-  top: -14px;
+  top: -8px;
   padding: 0;
   pointer-events: none;
   width: 100%;
@@ -93,9 +93,9 @@ const LightStripItem = styled.li<LightStripItemProps>(props => {
 });
 
 LightStripItem.defaultProps = {
-    globeWidth: 10,
-    globeHeight: 25,
-    globeSpacing: 30,
+    globeWidth: 6,
+    globeHeight: 15,
+    globeSpacing: 20,
     globeSpread: 3,
     lightOffOpacity: 0.4,
 }
@@ -116,10 +116,7 @@ const colors = [
     '247,189,0',
 ];
 
-const pickColor = (i: number) => {
-    console.log((i + 1) % colors.length);
-    return colors[(i + 1) % colors.length];
-}
+const pickColor = (i: number) => colors[(i + 1) % colors.length];
 
 const LightStrip = (props: Props) => {
     const [width] = useWindowSize();
@@ -139,12 +136,18 @@ const LightStrip = (props: Props) => {
     }, [width, globeWidth, globeSpacing]);
 
     return (
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         <LightStripContainer>
             {
                 Array.from({ length: size ?? stripLength }).map((_, idx) => (
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
-                    <LightStripItem key={ idx } globeWidth={ globeWidth } globeHeight={ globeHeight } globeSpacing={ globeSpacing } globeSpread={ globeSpread } lightOffOpacity={ lightOffOpacity } rgbColor={ pickColor(idx) } style={{ animationDuration: `${ Math.random() * (1.4 - 0.9) + 0.9 }s` }}/>
+                    <LightStripItem key={ idx } globeWidth={ globeWidth } globeHeight={ globeHeight } globeSpacing={ globeSpacing } globeSpread={ globeSpread } lightOffOpacity={ lightOffOpacity } rgbColor={ pickColor(idx) }
+                                    style={{
+                                        animationDuration: `${ Math.random() * (1.4 - 0.9) + 0.9 }s`,
+                                        transform: `rotate(${ Math.random() * (7 + 7) - 7 }deg)`,
+                                    }}/>
                 ))
             }
         </LightStripContainer>
