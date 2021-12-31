@@ -149,7 +149,7 @@ const NewYearGift: NextPage = () => {
                     >
                         { message?.title }
                     </h4>
-                    <p style={{ fontSize: '1rem' }}>
+                    <p style={{ fontSize: '0.9rem' }}>
                         { message?.message }
                     </p>
                     <p style={{ fontSize: '0.6rem', fontWeight: 'bold' }}>
