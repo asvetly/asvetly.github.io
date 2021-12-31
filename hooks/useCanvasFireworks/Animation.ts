@@ -3,7 +3,7 @@ import {Firework} from "./Firework";
 import {random} from "./utils";
 
 export class Animation {
-    static readonly PARTICLES_COUNT = 70;
+    static readonly PARTICLES_COUNT = 60;
 
     // particle collection
     protected particles: Particle[] = [];
@@ -12,7 +12,7 @@ export class Animation {
     // starting hue
     protected hue = 150;
     // this will time the auto launches of fireworks; one launch per 80 loop ticks
-    protected timerTotal = 60;
+    protected timerTotal = 40;
     protected timerTick = 0;
 
     constructor(
