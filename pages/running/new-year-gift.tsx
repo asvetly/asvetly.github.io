@@ -17,23 +17,38 @@ const GiftContainer = styled.div`
     display: none;
   }
   transform: scale(0);
-  transform-origin: center;
+  transform-origin: center center;
   animation: scaling 1.5s ease-in;
   animation-delay: 2s;
   animation-fill-mode: forwards;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
+  z-index: 1;
 
   @keyframes scaling {
     from{ transform: scale(0); }
     to{ transform: scale(1); }
   }
+`
+
+const CardContainer = styled.div`
+  transform: scale(0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 `
 
 const NewYearGift: NextPage = () => {
@@ -70,9 +85,15 @@ const NewYearGift: NextPage = () => {
         TweenMax.to(".gift", 1, {
             opacity: 0,
             delay: 1,
-            // onStart: function() {
-            //     startScene();
-            // },
+            onStart: function() {
+                TweenMax.to(".card", 1, {
+                    scale: 1,
+                    delay: 0,
+                    duration: 1,
+                    ease: Power2.easeOut
+                });
+                // document.querySelector(".card")?.classList.add("show");
+            },
             onComplete: function() {
                 document.querySelector(".gift")?.classList.add("hidden");
             }
@@ -109,20 +130,22 @@ const NewYearGift: NextPage = () => {
                 <GiftBox />
             </GiftContainer>
 
-            <Card
-                height="50vh"
-                width="0"
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                }}
-            >
-                <h4>{ message?.title }</h4>
-                <p>{ message?.message }</p>
-                <div>
-                    { message?.link }
-                </div>
-            </Card>
+            <CardContainer className="card">
+                <Card
+                    height="50vh"
+                    width="0"
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                    }}
+                >
+                    <h4>{ message?.title }</h4>
+                    <p>{ message?.message }</p>
+                    <div>
+                        { message?.link }
+                    </div>
+                </Card>
+            </CardContainer>
 
             {/*<SnowHouses />*/}
         </main>

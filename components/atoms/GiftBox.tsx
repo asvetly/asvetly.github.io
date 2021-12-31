@@ -1,5 +1,5 @@
 const GiftBox = () => (
-    <svg viewBox="-20 -50 490 557">
+    <svg style={{ height: '100%', width: '100%' }} viewBox="-20 -50 490 557">
         <g className="box">
             <polygon style={{fill: '#B8CDB7'}} points="19.3,219.9 49.7,457.3 394.8,457.3 436.2,192.3"/>
             <g fill="#FAEECD">
