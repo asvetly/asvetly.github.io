@@ -149,7 +149,22 @@ const NewYearGift: NextPage = () => {
                     >
                         { message?.title }
                     </h4>
-                    <p style={{ fontSize: '1rem' }}>{ message?.message }</p>
+                    <p style={{ fontSize: '1rem' }}>
+                        { message?.message }
+                    </p>
+                    <p style={{ fontSize: '0.6rem', fontWeight: 'bold' }}>
+                        КОПИРУЙ КОД И ЖМИ<br />
+                        <a href="https://my.gallup.com/_Home/RedeemAccessCode#"
+                           rel="noreferrer"
+                           target="_blank"
+                           style={{
+                               fontSize: '1rem',
+                               fontWeight: 'normal',
+                           }}
+                        >
+                            → СЮДА ←
+                        </a>
+                    </p>
                     <div style={{
                         position: 'relative',
                         fontSize: '1.2rem',
