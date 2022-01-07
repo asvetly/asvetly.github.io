@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Card = styled.div<{
-    height: string;
-    width: string;
+    height?: string;
+    width?: string;
     borderWidth?: number;
 }>`
   background: #191c29;
