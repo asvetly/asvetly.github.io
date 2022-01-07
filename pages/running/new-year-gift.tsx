@@ -61,10 +61,9 @@ const NewYearGift: NextPage = () => {
     useEffect(() => {
         const id = new URLSearchParams(location.search).get('c');
         if (!id) return;
-        getDoc(doc(firebaseDb, 'new-year-gifts', id))
-            .then(r => {
-                setMessage(r.data() as any);
-            });
+        fetch(`/api/newYearGift?c=${id}`)
+            .then(d => d.json())
+            .then(setMessage);
     }, []);
 
     const openGift = useCallback(() => {
