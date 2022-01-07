@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Card = styled.div<{ height: string; width: string }>`
+export const Card = styled.div<{
+    height: string;
+    width: string;
+    borderWidth?: number;
+}>`
   background: #191c29;
   width: calc(${ props => props.height } / 1.5);
   height: ${ props => props.height };
@@ -27,14 +31,14 @@ export const Card = styled.div<{ height: string; width: string }>`
 
   &::before {
     content: "";
-    width: 104%;
-    height: 102%;
+    width: calc(100% + ${ props => props.borderWidth! * 2 }px);
+    height: calc(100% + ${ props => props.borderWidth! * 2 }px);
     border-radius: 8px;
     background: linear-gradient(132deg, rgb(0,247,70), rgb(247,0,66), rgb(0,111,255), rgb(247,189,0));
     position: absolute;
     z-index: -1;
-    top: -1%;
-    left: -2%;
+    top: -${ props => props.borderWidth }px;
+    left: -${ props => props.borderWidth }px;
     animation: spin 3.5s linear infinite;
     background-size: 400% 400%;
   }
@@ -63,3 +67,7 @@ export const Card = styled.div<{ height: string; width: string }>`
     100%{background-position:22% 0%}
   }
 `;
+
+Card.defaultProps = {
+    borderWidth: 2,
+}
