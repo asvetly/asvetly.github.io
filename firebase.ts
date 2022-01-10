@@ -1,6 +1,7 @@
-import { initializeApp } from 'firebase/app';
+import {getAnalytics} from 'firebase/analytics';
+import {initializeApp} from 'firebase/app';
 import {getFirestore, QueryDocumentSnapshot} from 'firebase/firestore/lite';
-import { getAnalytics } from 'firebase/analytics';
+import {getStorage} from 'firebase/storage';
 
 const config = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -15,8 +16,9 @@ const config = {
 export const firebaseApp = initializeApp(config);
 export const firebaseDb = getFirestore(firebaseApp);
 export const firebaseAnalytics = getAnalytics(firebaseApp);
+export const firebaseStorage = getStorage(firebaseApp);
 
 export const converter = <T>() => ({
     toFirestore: (data: Partial<T>) => data,
     fromFirestore: (snap: QueryDocumentSnapshot) => snap.data() as T,
-})
+});

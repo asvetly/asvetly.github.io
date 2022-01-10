@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const Card = styled.div<{
     height?: string;
@@ -18,7 +18,7 @@ export const Card = styled.div<{
     font-size: 1.4em;
     color: #fff;
     cursor: pointer;
-    transform: translate3d(50%, 50%, 10xp);
+    transform: translate3d(50%, 50%, 10 xp);
 
     //&:hover {
     //  color: rgb(88 199 250 / 100%);
@@ -30,36 +30,30 @@ export const Card = styled.div<{
     //}
 
     &::before {
-        content: '';
         width: calc(100% + ${(props) => props.borderWidth! * 2}px);
         height: calc(100% + ${(props) => props.borderWidth! * 2}px);
         border-radius: 8px;
-        background: linear-gradient(
-            132deg,
-            rgb(0, 247, 70),
-            rgb(247, 0, 66),
-            rgb(0, 111, 255),
-            rgb(247, 189, 0)
-        );
-        position: absolute;
-        z-index: -1;
         top: -${(props) => props.borderWidth}px;
         left: -${(props) => props.borderWidth}px;
-        animation: spin 3.5s linear infinite;
-        background-size: 400% 400%;
     }
 
     &::after {
-        position: absolute;
-        content: '';
         left: 0;
         right: 0;
-        z-index: -1;
         height: 100%;
         width: 100%;
         margin: 0 auto;
         transform: scale(0.8);
         filter: blur(calc(${(props) => props.height} / 6));
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+
+    &::after,
+    &::before {
+        position: absolute;
+        content: '';
+        z-index: -1;
         background: linear-gradient(
             132deg,
             rgb(0, 247, 70),
@@ -67,8 +61,6 @@ export const Card = styled.div<{
             rgb(0, 111, 255),
             rgb(247, 189, 0)
         );
-        opacity: 1;
-        transition: opacity 0.5s;
         animation: spin 3.5s linear infinite;
         background-size: 400% 400%;
     }

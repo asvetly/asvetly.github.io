@@ -1,5 +1,9 @@
+import {Timestamp} from '@firebase/firestore';
+import clsx from 'clsx';
+import differenceInDays from 'date-fns/differenceInDays';
 import type {NextPage} from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
@@ -37,16 +41,52 @@ const NavBar = styled.div`
     backdrop-filter: blur(2px);
 `;
 
+const CardContent = styled.div`
+    position: static;
+`;
+
+const DayItem = styled(Card)`
+    &.passed,
+    &.passed::after,
+    &.passed::before {
+        background: rgb(10 175 17);
+    }
+
+    &.current,
+    &.current::after,
+    &.current::before {
+        background: rgb(199, 156, 14);
+    }
+
+    &.failed,
+    &.failed::after,
+    &.failed::before {
+        background: rgb(203, 0, 54);
+    }
+`;
+
 const ThreeMonth: NextPage = () => {
     const [data, setData] = useState<ThreeMonthChallengeData | undefined>(
         undefined,
     );
+    const [currentDay, setCurrentDay] = useState<number>(0);
 
     useEffect(() => {
-        (async () =>
-            setData(
-                await fetch('/api/threeMonthChallenge').then((d) => d.json()),
-            ))();
+        (async () => {
+            const threeMonthChallenge = await fetch(
+                '/api/threeMonthChallenge',
+            ).then((d) => d.json());
+            setData(threeMonthChallenge);
+            setCurrentDay(
+                differenceInDays(
+                    new Date(),
+                    new Timestamp(
+                        threeMonthChallenge.challenge.startDate.seconds,
+                        threeMonthChallenge.challenge.startDate.nanoseconds,
+                    ).toDate(),
+                ),
+            );
+        })();
     }, []);
 
     return (
@@ -66,17 +106,63 @@ const ThreeMonth: NextPage = () => {
             </Head>
             <NavBar>
                 <span>
-                    days passed: <b>0</b>
+                    days passed:{' '}
+                    <b>
+                        {currentDay - (data?.challenge.daysFailed.length ?? 0)}
+                    </b>
                 </span>
                 <HealthBar style={{marginLeft: 'auto'}} />
             </NavBar>
             <GridContainer>
                 {Array.from({length: data?.challenge.days || 0}).map(
-                    (_, idx) => (
-                        <Card key={idx} borderWidth={4}>
-                            {idx + 1}
-                        </Card>
-                    ),
+                    (c, idx) => {
+                        const failed = data?.challenge.daysFailed.includes(idx);
+                        const passed = idx < currentDay && !failed;
+                        const current = idx === currentDay;
+                        const gift = data?.gifts.find((g) => g.winDay === idx);
+                        return (
+                            <DayItem
+                                key={idx}
+                                borderWidth={4}
+                                className={clsx({
+                                    passed,
+                                    failed,
+                                    current,
+                                })}
+                                style={{userSelect: 'none'}}
+                            >
+                                <CardContent>
+                                    {passed ? (
+                                        gift ? (
+                                            <a
+                                                href={gift.link}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                <img
+                                                    src={gift.image}
+                                                    style={{
+                                                        width: '70%',
+                                                        margin: 'auto',
+                                                        animation:
+                                                            'waving 1.5s linear infinite',
+                                                    }}
+                                                />
+                                            </a>
+                                        ) : (
+                                            '🎉'
+                                        )
+                                    ) : failed ? (
+                                        '☠️'
+                                    ) : current ? (
+                                        '?'
+                                    ) : (
+                                        idx + 1
+                                    )}
+                                </CardContent>
+                            </DayItem>
+                        );
+                    },
                 )}
             </GridContainer>
         </main>
