@@ -39,9 +39,6 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
                 collection(firebaseDb, 'three-month-challenge-prizes'),
             ).then((c) => {
                 const storage = getStorage(firebaseApp);
-                console.log(
-                    ref(storage, 'three-month-challenge-prizes/helix.webp'),
-                );
 
                 return Promise.all(
                     c.docs.map((doc) => {

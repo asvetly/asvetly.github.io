@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import differenceInDays from 'date-fns/differenceInDays';
 import type {NextPage} from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
