@@ -14,8 +14,8 @@ const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 180px;
-    gap: 14px;
-    padding: 5px 10px 20px 10px;
+    gap: 20px;
+    padding: 5px 15px 20px 15px;
     justify-content: center;
 
     @media only screen and (min-width: 768px) {
@@ -38,10 +38,12 @@ const NavBar = styled.div`
     z-index: 2;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(2px);
+    font-size: 1.1rem;
 `;
 
 const CardContent = styled.div`
     position: static;
+    font-size: 2.2rem;
 `;
 
 const DayItem = styled(Card)`
