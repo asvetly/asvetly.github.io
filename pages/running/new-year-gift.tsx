@@ -149,8 +149,6 @@ const NewYearGift: NextPage = () => {
 
             <CardContainer className="card">
                 <Card
-                    height="50vh"
-                    width="0"
                     borderWidth={8}
                     style={{
                         display: 'flex',

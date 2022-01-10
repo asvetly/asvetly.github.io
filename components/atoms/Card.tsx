@@ -64,13 +64,13 @@ export const Card = styled.div<{
 
     @keyframes spin {
         0% {
-            background-position: 22% 0%;
+            background-position: 22% 0;
         }
         50% {
             background-position: 79% 100%;
         }
         100% {
-            background-position: 22% 0%;
+            background-position: 22% 0;
         }
     }
 `;
