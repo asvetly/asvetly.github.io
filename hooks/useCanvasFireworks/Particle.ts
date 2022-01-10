@@ -1,4 +1,4 @@
-import {random} from "./utils";
+import {random} from './utils';
 
 export class Particle {
     protected x: number;
@@ -15,7 +15,7 @@ export class Particle {
     public decay: number;
 
     constructor(
-        coordinates: { x: number, y: number; },
+        coordinates: {x: number; y: number},
         hue: number,
         protected c2d: CanvasRenderingContext2D,
     ) {
@@ -24,7 +24,7 @@ export class Particle {
         // track the past coordinates of each particle to create a trail effect, increase the coordinate count to create more prominent trails
         this.coordinates = [];
         this.coordinateCount = 5;
-        while(this.coordinateCount--) {
+        while (this.coordinateCount--) {
             this.coordinates.push([this.x, this.y]);
         }
         // set a random angle in all possible directions, in radians
@@ -59,9 +59,19 @@ export class Particle {
     draw() {
         this.c2d.beginPath();
         // move to the last tracked coordinates in the set, then draw a line to the current x and y
-        this.c2d.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
+        this.c2d.moveTo(
+            this.coordinates[this.coordinates.length - 1][0],
+            this.coordinates[this.coordinates.length - 1][1],
+        );
         this.c2d.lineTo(this.x, this.y);
-        this.c2d.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
+        this.c2d.strokeStyle =
+            'hsla(' +
+            this.hue +
+            ', 100%, ' +
+            this.brightness +
+            '%, ' +
+            this.alpha +
+            ')';
         this.c2d.stroke();
     }
 }

@@ -1,7 +1,10 @@
-import { RefObject, useEffect, useRef } from 'react';
-import {Animation} from "./Animation";
+import {RefObject, useEffect, useRef} from 'react';
 
-export default function useCanvasSnowfall(canvasRef: RefObject<HTMLCanvasElement>) {
+import {Animation} from './Animation';
+
+export default function useCanvasSnowfall(
+    canvasRef: RefObject<HTMLCanvasElement>,
+) {
     const animation = useRef<Animation | undefined>();
 
     useEffect(() => {
@@ -15,12 +18,12 @@ export default function useCanvasSnowfall(canvasRef: RefObject<HTMLCanvasElement
         canvas.height = window.innerHeight;
 
         addEventListener('resize', () => {
-            canvas.width = innerWidth
-            canvas.height = innerHeight
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
             animation.current?.init();
-        })
+        });
 
         animation.current.init();
         animation.current.animate();
-    }, [canvasRef])
+    }, [canvasRef]);
 }

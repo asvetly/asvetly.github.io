@@ -1,6 +1,6 @@
-import {Particle} from "./Particle";
-import {Firework} from "./Firework";
-import {random} from "./utils";
+import {Firework} from './Firework';
+import {Particle} from './Particle';
+import {random} from './utils';
 
 export class Animation {
     static readonly PARTICLES_COUNT = 60;
@@ -23,7 +23,7 @@ export class Animation {
     // create particle group/explosion
     createParticles(x: number, y: number) {
         for (let i = 0; i < Animation.PARTICLES_COUNT; i++) {
-            this.particles.push(new Particle({ x, y }, this.hue, this.c2d));
+            this.particles.push(new Particle({x, y}, this.hue, this.c2d));
         }
     }
 
@@ -63,8 +63,14 @@ export class Animation {
             this.fireworks[i].draw(this.hue);
             this.fireworks[i].update();
             // if the distance traveled, including velocities, is greater than the initial distance to the target, then the target has been reached
-            if (this.fireworks[i].distanceTraveled >= this.fireworks[i].distanceToTarget) {
-                this.createParticles(this.fireworks[i].tx, this.fireworks[i].ty);
+            if (
+                this.fireworks[i].distanceTraveled >=
+                this.fireworks[i].distanceToTarget
+            ) {
+                this.createParticles(
+                    this.fireworks[i].tx,
+                    this.fireworks[i].ty,
+                );
                 // remove the firework, use the index passed into the update function to determine which to remove
                 this.fireworks.splice(i, 1);
             }
@@ -72,7 +78,7 @@ export class Animation {
 
         // loop over each particle, draw it, update it
         i = this.particles.length;
-        while(i--) {
+        while (i--) {
             this.particles[i].draw();
             this.particles[i].update();
 
@@ -92,8 +98,8 @@ export class Animation {
                     random(0, this.canvas.width),
                     random(0, this.canvas.height / 2),
                     this.c2d,
-               )
-           );
+                ),
+            );
             this.timerTick = 0;
         } else {
             this.timerTick++;

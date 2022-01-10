@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore/lite';
+import {getFirestore, QueryDocumentSnapshot} from 'firebase/firestore/lite';
 import { getAnalytics } from 'firebase/analytics';
 
 const config = {
@@ -15,3 +15,8 @@ const config = {
 export const firebaseApp = initializeApp(config);
 export const firebaseDb = getFirestore(firebaseApp);
 export const firebaseAnalytics = getAnalytics(firebaseApp);
+
+export const converter = <T>() => ({
+    toFirestore: (data: Partial<T>) => data,
+    fromFirestore: (snap: QueryDocumentSnapshot) => snap.data() as T,
+})

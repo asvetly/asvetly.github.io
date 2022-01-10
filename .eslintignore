@@ -1,0 +1,8 @@
+.next
+.vercel
+node_modules
+next-env.d.ts
+next-config.js
+# we want to ignore "tests/files" here, but unfortunately doing so would
+# interfere with unit test and fail it for some reason.
+# tests/files

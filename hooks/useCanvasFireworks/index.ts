@@ -1,7 +1,10 @@
-import {RefObject, useEffect, useRef} from "react";
-import {Animation} from "./Animation";
+import {RefObject, useEffect, useRef} from 'react';
 
-export default function useCanvasFireworks(canvasRef: RefObject<HTMLCanvasElement>) {
+import {Animation} from './Animation';
+
+export default function useCanvasFireworks(
+    canvasRef: RefObject<HTMLCanvasElement>,
+) {
     const animation = useRef<Animation | undefined>();
 
     useEffect(() => {
@@ -15,11 +18,11 @@ export default function useCanvasFireworks(canvasRef: RefObject<HTMLCanvasElemen
         canvas.height = window.innerHeight;
 
         addEventListener('resize', () => {
-            canvas.width = innerWidth
-            canvas.height = innerHeight
-        })
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+        });
 
         animation.current?.init();
         animation.current.animate();
-    }, [canvasRef])
+    }, [canvasRef]);
 }

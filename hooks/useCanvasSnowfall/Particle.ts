@@ -21,7 +21,7 @@ export class Particle {
         this.y = this.initY + Math.tan(this.radians) * 300;
 
         this.draw();
-    }
+    };
 
     public draw = () => {
         this.c2d.beginPath();
@@ -30,6 +30,5 @@ export class Particle {
         this.c2d.fill();
 
         this.c2d.closePath();
-    }
+    };
 }
-
