@@ -1,13 +1,10 @@
 import styled, {css} from 'styled-components';
 
 export const Card = styled.div<{
-    height?: string;
     width?: string;
     borderWidth?: number;
 }>`
     background: #191c29;
-    width: calc(${(props) => props.height} / 1.5);
-    height: ${(props) => props.height};
     padding: 3px;
     position: relative;
     border-radius: 6px;
@@ -44,7 +41,7 @@ export const Card = styled.div<{
         width: 100%;
         margin: 0 auto;
         transform: scale(0.8);
-        filter: blur(calc(${(props) => props.height} / 6));
+        filter: blur(1.5rem);
         opacity: 1;
         transition: opacity 0.5s;
     }

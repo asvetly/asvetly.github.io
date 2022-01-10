@@ -41,30 +41,53 @@ const NavBar = styled.div`
     font-size: 1.1rem;
 `;
 
-const CardContent = styled.div`
-    position: static;
-    font-size: 2.2rem;
-`;
-
 const DayItem = styled(Card)`
+    font-size: 2.2rem;
+
     &.passed,
     &.passed::after,
     &.passed::before {
-        background: rgb(10 175 17);
+        background: linear-gradient(
+            10deg,
+            hsl(125, 68%, 44%),
+            hsl(115, 68%, 44%),
+            hsl(120, 68%, 44%),
+            hsl(130, 68%, 44%)
+        );
+        animation: spin 4s linear infinite;
+        background-size: 400% 400%;
     }
 
     &.current,
     &.current::after,
     &.current::before {
-        background: rgb(199, 156, 14);
+        background: linear-gradient(
+            10deg,
+            hsl(46, 100%, 50%),
+            hsl(40, 100%, 50%),
+            hsl(43, 100%, 50%),
+            hsl(48, 100%, 50%)
+        );
+        animation: spin 4s linear infinite;
+        background-size: 400% 400%;
     }
 
     &.failed,
     &.failed::after,
     &.failed::before {
-        background: rgb(203, 0, 54);
+        background: linear-gradient(
+            10deg,
+            hsl(0, 100%, 50%),
+            hsl(0, 100%, 45%),
+            hsl(0, 100%, 48%),
+            hsl(0, 100%, 53%)
+        );
+        animation: spin 4s linear infinite;
+        background-size: 400% 400%;
     }
 `;
+
+// const Button = styled``
 
 const ThreeMonth: NextPage = () => {
     const [data, setData] = useState<ThreeMonthChallengeData | undefined>(
@@ -123,6 +146,7 @@ const ThreeMonth: NextPage = () => {
                         const gift = data?.gifts.find((g) => g.winDay === idx);
                         return (
                             <DayItem
+                                width="114px"
                                 key={idx}
                                 borderWidth={4}
                                 className={clsx({
@@ -132,35 +156,56 @@ const ThreeMonth: NextPage = () => {
                                 })}
                                 style={{userSelect: 'none'}}
                             >
-                                <CardContent>
-                                    {passed ? (
-                                        gift ? (
-                                            <a
-                                                href={gift.link}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            >
-                                                <img
-                                                    src={gift.image}
-                                                    style={{
-                                                        width: '70%',
-                                                        margin: 'auto',
-                                                        animation:
-                                                            'waving 1.5s linear infinite',
-                                                    }}
-                                                />
-                                            </a>
-                                        ) : (
-                                            '🎉'
-                                        )
-                                    ) : failed ? (
-                                        '☠️'
-                                    ) : current ? (
-                                        '?'
+                                {passed ? (
+                                    gift ? (
+                                        <a
+                                            href={gift.link}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            <img
+                                                src={gift.image}
+                                                style={{
+                                                    width: '70%',
+                                                    margin: 'auto',
+                                                    animation:
+                                                        'waving 1.5s linear infinite',
+                                                }}
+                                            />
+                                        </a>
                                     ) : (
-                                        idx + 1
-                                    )}
-                                </CardContent>
+                                        '🎉'
+                                    )
+                                ) : failed ? (
+                                    '☠️'
+                                ) : current ? (
+                                    <div>
+                                        <p
+                                            style={{
+                                                fontSize: '3rem',
+                                                lineHeight: '2.6rem',
+                                                letterSpacing: '-0.2rem',
+                                            }}
+                                        >
+                                            DID
+                                        </p>
+                                        <p
+                                            style={{
+                                                fontSize: '2rem',
+                                                letterSpacing: '-0.1rem',
+                                                lineHeight: '1.5rem',
+                                            }}
+                                        >
+                                            you?
+                                        </p>
+                                        <div style={{fontSize: '2rem'}}>
+                                            <button>🎉</button>
+                                            <button>☠️</button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    idx + 1
+                                )}
                             </DayItem>
                         );
                     },

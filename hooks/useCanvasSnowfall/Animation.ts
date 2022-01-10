@@ -1,12 +1,5 @@
+import {randomIntFromRange} from '../../utils';
 import {Particle} from './Particle';
-
-function randomIntFromRange(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function randomColor(colors: Array<string>) {
-    return colors[Math.floor(Math.random() * colors.length)];
-}
 
 export class Animation {
     constructor(
@@ -31,7 +24,9 @@ export class Animation {
                     Math.random() * this.canvas.width,
                     Math.random() * this.canvas.height,
                     randomIntFromRange(0.1, this.attributes.particleSize),
-                    randomColor(this.attributes.colors),
+                    this.attributes.colors[
+                        randomIntFromRange(0, this.attributes.colors.length)
+                    ],
                     Math.random() * 80,
                     this.c2d,
                 ),
