@@ -156,6 +156,8 @@ const NewYearGift: NextPage = () => {
                         justifyContent: 'space-between',
                         padding: '3%',
                         fontSize: '1rem',
+                        width: '20rem',
+                        height: '30rem',
                     }}
                 >
                     <h4

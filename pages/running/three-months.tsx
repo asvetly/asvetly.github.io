@@ -11,80 +11,83 @@ import HealthBar from '../../components/atoms/HealthBar';
 import {ThreeMonthChallengeData} from '../api/threeMonthChallenge';
 
 const GridContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 180px;
-    gap: 20px;
-    padding: 5px 15px 20px 15px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 180px;
 
-    @media only screen and (min-width: 768px) {
-        grid-template-columns: repeat(5, 1fr);
-        grid-auto-rows: 200px;
-    }
+  //grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  //grid-auto-rows: 180px;
+  gap: 20px;
+  padding: 5px 15px 20px 15px;
+  justify-content: center;
 
-    @media only screen and (min-width: 1024px) {
-        grid-template-columns: repeat(5, 1fr);
-        grid-auto-rows: 250px;
-    }
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 200px;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 250px;
+  }
 `;
 
 const NavBar = styled.div`
-    position: sticky;
-    display: flex;
-    align-items: center;
-    top: 0;
-    padding: 10px;
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(2px);
-    font-size: 1.1rem;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  top: 0;
+  padding: 10px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(2px);
+  font-size: 1.1rem;
 `;
 
 const DayItem = styled(Card)`
-    font-size: 2.2rem;
+  font-size: 2.2rem;
 
-    &.passed,
-    &.passed::after,
-    &.passed::before {
-        background: linear-gradient(
-            10deg,
+  &.passed,
+  &.passed::after,
+  &.passed::before {
+    background: conic-gradient(
+            from var(--aio-rotation-angle),
             hsl(125, 68%, 44%),
             hsl(115, 68%, 44%),
             hsl(120, 68%, 44%),
-            hsl(130, 68%, 44%)
-        );
-        animation: spin 4s linear infinite;
-        background-size: 400% 400%;
-    }
+            hsl(125, 68%, 44%)
+    );
+  }
 
-    &.current,
-    &.current::after,
-    &.current::before {
-        background: linear-gradient(
-            10deg,
+  &.current {
+    flex-direction: column;
+  }
+
+  &.current,
+  &.current::after,
+  &.current::before {
+    background: conic-gradient(
+            from var(--aio-rotation-angle),
             hsl(46, 100%, 50%),
             hsl(40, 100%, 50%),
             hsl(43, 100%, 50%),
-            hsl(48, 100%, 50%)
-        );
-        animation: spin 4s linear infinite;
-        background-size: 400% 400%;
-    }
+            hsl(46, 100%, 50%)
+    );
+    animation: spin 4s linear infinite;
 
-    &.failed,
-    &.failed::after,
-    &.failed::before {
-        background: linear-gradient(
-            10deg,
+  }
+
+  &.failed,
+  &.failed::after,
+  &.failed::before {
+    background: conic-gradient(
+            from var(--aio-rotation-angle),
             hsl(0, 100%, 50%),
             hsl(0, 100%, 45%),
             hsl(0, 100%, 48%),
-            hsl(0, 100%, 53%)
-        );
-        animation: spin 4s linear infinite;
-        background-size: 400% 400%;
-    }
+            hsl(0, 100%, 50%)
+    );
+  }
 `;
 
 // const Button = styled``
@@ -179,7 +182,7 @@ const ThreeMonth: NextPage = () => {
                                 ) : failed ? (
                                     '☠️'
                                 ) : current ? (
-                                    <div>
+                                    <>
                                         <p
                                             style={{
                                                 fontSize: '3rem',
@@ -198,11 +201,45 @@ const ThreeMonth: NextPage = () => {
                                         >
                                             you?
                                         </p>
-                                        <div style={{fontSize: '2rem'}}>
-                                            <button>🎉</button>
-                                            <button>☠️</button>
+                                        <div
+                                            style={{
+                                                fontSize: '2rem',
+                                                flex: 1,
+                                                marginTop: '2rem',
+                                                width: '100%',
+                                                borderRadius: '5px',
+                                            }}
+                                        >
+                                            <button
+                                                style={{
+                                                    height: '100%',
+                                                    width: '50%',
+                                                    background: '#fafad25c',
+                                                    border: 'none',
+                                                    borderRight:
+                                                        '0.5px solid hsl(0deg 0% 0% / 14%)',
+                                                    borderBottomLeftRadius:
+                                                        '5px',
+                                                    borderTopLeftRadius: '5px',
+                                                }}
+                                            >
+                                                🎉
+                                            </button>
+                                            <button
+                                                style={{
+                                                    height: '100%',
+                                                    width: '50%',
+                                                    background: '#fafad25c',
+                                                    border: 'none',
+                                                    borderBottomRightRadius:
+                                                        '5px',
+                                                    borderTopRightRadius: '5px',
+                                                }}
+                                            >
+                                                ☠️
+                                            </button>
                                         </div>
-                                    </div>
+                                    </>
                                 ) : (
                                     idx + 1
                                 )}

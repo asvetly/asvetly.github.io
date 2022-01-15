@@ -24,14 +24,12 @@
   },
 
   "plugins": [
-    "@typescript-eslint",
-    "prettier"
+    "@typescript-eslint"
   ],
 
   "extends": [
     "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:@typescript-eslint/recommended"
   ],
 
   "rules": {
@@ -48,15 +46,6 @@
           ["parent", "sibling"]
         ],
         "newlines-between": "always-and-inside-groups"
-      }
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "trailingComma": "all",
-        "bracketSpacing": false,
-        "tabWidth": 4
       }
     ],
     "import/prefer-default-export": ["off"]

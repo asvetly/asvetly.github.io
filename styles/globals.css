@@ -48,3 +48,33 @@ p, h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
   height: 100%;
 }
+
+
+
+/**************************************************
+**************** CUSTOM PROPERTIES ****************
+***************************************************/
+
+@property --aio-rotation-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+
+@property --aio-color-1 {
+  syntax: '<color>';
+  initial-value: hsl(0, 0%, 100%);
+  inherits: true;
+}
+
+@property --aio-color-2 {
+  syntax: '<color>';
+  initial-value: hsl(0, 0%, 100%);
+  inherits: false;
+}
+
+@property --aio-color-3 {
+  syntax: '<color>';
+  initial-value: hsl(0, 0%, 100%);
+  inherits: false;
+}
