@@ -30,8 +30,7 @@ export const Card = styled.div<{
     height: 100%;
     width: 100%;
     margin: 0 auto;
-    transform: scale(0.8);
-    filter: blur(1.5rem);
+    filter: blur(10px);
     opacity: 1;
     transition: opacity 0.5s;
   }
