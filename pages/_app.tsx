@@ -8,7 +8,9 @@ function MyApp({Component, pageProps}: AppProps) {
     const router = useRouter()
 
     useEffect(() => {
-        const handleRouteChange = url => {
+        const handleRouteChange = (url: any) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
                 page_path: url,
             })
